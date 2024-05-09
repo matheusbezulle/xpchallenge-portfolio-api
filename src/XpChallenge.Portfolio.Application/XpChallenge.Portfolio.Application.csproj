@@ -16,8 +16,4 @@
     <ProjectReference Include="..\XpChallenge.Portfolio.MongoDb\XpChallenge.Portfolio.Infra.MongoDb.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\RemoverProdutoFinanceiro\" />
-  </ItemGroup>
-
 </Project>

@@ -19,14 +19,19 @@ namespace XpChallenge.Portfolio.Domain.Entities
         [BsonElement("ProdutosFinanceiros")]
         public List<ProdutoFinanceiro> ProdutosFinanceiros { get; private set; } = [];
 
+        public ProdutoFinanceiro? ObterProdutoFinanceiro(string nome)
+        {
+            return ProdutosFinanceiros.FirstOrDefault(p => string.Equals(p.Nome, nome));
+        }
+
         public void AdicionarProdutoFinanceiro(ProdutoFinanceiro produtoFinanceiro)
         {
             ProdutosFinanceiros.Add(produtoFinanceiro);
         }
 
-        public ProdutoFinanceiro? ObterProdutoFinanceiro(string nome)
+        public void RemoverProdutoFinanceiro(ProdutoFinanceiro produtoFinanceiro)
         {
-            return ProdutosFinanceiros.FirstOrDefault(p => string.Equals(p.Nome, nome));
+            ProdutosFinanceiros.Remove(produtoFinanceiro);
         }
 
         public bool VerificarProdutoFinanceiroExistente(string nome)

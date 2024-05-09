@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using XpChallenge.Portfolio.Api.Requests;
 using XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceiro;
 using XpChallenge.Portfolio.Application.Commands.IncluirProdutoFinanceiro;
+using XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro;
 
 namespace XpChallenge.Portfolio.Api.Controllers
 {
@@ -22,16 +23,17 @@ namespace XpChallenge.Portfolio.Api.Controllers
         }
 
         [HttpPut("/peso")]
-        public async Task<ActionResult> AlterarPeso([FromBody] AlterarPesoProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> AlterarPeso([FromBody] AlterarPesoProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
         {
             var result = await _mediator.Send(new AlterarPesoProdutoFinanceiroCommand(request.IdPortfolio, request.Nome, request.Peso));
             return Ok(result);
         }
 
         [HttpDelete]
-        public IActionResult RemoverProduto()
+        public async Task<IActionResult> RemoverProduto([FromBody] RemoverProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
         {
-            return Ok();
+            var result = await _mediator.Send(new RemoverProdutoFinanceiroCommand(request.IdPortfolio, request.Nome));
+            return Ok(result);
         }
     }
 }
