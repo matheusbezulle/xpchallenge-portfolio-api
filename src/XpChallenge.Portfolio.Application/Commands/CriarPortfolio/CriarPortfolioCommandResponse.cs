@@ -1,7 +1,7 @@
 ﻿namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
 {
-    public class CriarPortfolioCommandResponse(Guid id)
+    public class CriarPortfolioCommandResponse(string? id = null)
     {
-        public Guid Id { get; set; } = id;
+        public string Id { get; set; } = id ?? string.Empty;
     }
 }

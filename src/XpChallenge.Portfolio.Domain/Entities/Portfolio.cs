@@ -4,7 +4,7 @@ using XpChallenge.Portfolio.Domain.ValueObjects;
 
 namespace XpChallenge.Portfolio.Domain.Entities
 {
-    public class Portfolio(string nome, int perfil)
+    public class Portfolio(string nome, PortfolioPerfil perfil)
     {
         [BsonId]
         [BsonElement("_id")]
@@ -14,9 +14,19 @@ namespace XpChallenge.Portfolio.Domain.Entities
         public string Nome { get; private set; } = nome;
 
         [BsonElement("Perfil")]
-        public PortfolioPerfil Perfil { get; private set; } = (PortfolioPerfil)perfil;
+        public PortfolioPerfil Perfil { get; private set; } = perfil;
 
         [BsonElement("ProdutosFinanceiros")]
-        public IEnumerable<ProdutoFinanceiro> ProdutosFinanceiros { get; private set; } = [];
+        public List<ProdutoFinanceiro> ProdutosFinanceiros { get; private set; } = [];
+
+        public void AdicionarProdutoFinanceiro(ProdutoFinanceiro produtoFinanceiro)
+        {
+            ProdutosFinanceiros.Add(produtoFinanceiro);
+        }
+
+        public bool VerificarProdutoFinanceiroExistente(string nome)
+        {
+            return ProdutosFinanceiros.Any(p => string.Equals(p.Nome, nome));
+        }
     }
 }

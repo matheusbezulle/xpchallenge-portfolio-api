@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using XpChallenge.Portfolio.Api.Requests;
 using XpChallenge.Portfolio.Application.Commands.CriarPortfolio;
 using XpChallenge.Portfolio.Application.Commands.ExcluirPortfolio;
+using XpChallenge.Portfolio.Application.Queries.ObterPortfolio;
 
 namespace XpChallenge.Portfolio.Api.Controllers
 {
@@ -16,7 +17,7 @@ namespace XpChallenge.Portfolio.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CriarPortfolio([FromBody] CriarPortfolioRequest request, CancellationToken cancellationToken = default)
         {
-            var result = await _mediator.Send(new CriarPortfolioCommand(request.Nome, request.Descricao), cancellationToken);
+            var result = await _mediator.Send(new CriarPortfolioCommand(request.Nome, request.IdPerfil), cancellationToken);
             return Ok(result);
         }
 

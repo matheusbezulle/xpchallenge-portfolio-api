@@ -2,9 +2,9 @@
 
 namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
 {
-    public class CriarPortfolioCommand(string nome, string descricao) : IRequest<CriarPortfolioCommandResponse>
+    public class CriarPortfolioCommand(string nome, int idPerfil) : IRequest<CriarPortfolioCommandResponse>
     {
         public string Nome { get; set; } = nome;
-        public string Descricao { get; set; } = descricao;
+        public int IdPerfil { get; set; } = idPerfil;
     }
 }

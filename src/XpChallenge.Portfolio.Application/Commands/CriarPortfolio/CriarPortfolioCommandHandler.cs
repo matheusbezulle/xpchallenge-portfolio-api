@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
+using XpChallenge.Portfolio.Domain.ValueObjects;
 using Dominio = XpChallenge.Portfolio.Domain.Entities;
 
 namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
@@ -10,13 +11,16 @@ namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
 
         public async Task<CriarPortfolioCommandResponse> Handle(CriarPortfolioCommand request, CancellationToken cancellationToken)
         {
-            var portfolio = new Dominio.Portfolio(request.Nome, request.Descricao, string.Empty);
+            var response = new CriarPortfolioCommandResponse();
+
+            var portfolio = new Dominio.Portfolio(request.Nome, (PortfolioPerfil)request.IdPerfil);
 
             var id = await _portfolioService.CriarAsync(portfolio, cancellationToken);
 
-            if (id == Guid.Empty)
+            if (id == null)
             {
-                //erro
+                //add msg erro 
+                return response;
             }
 
             return new(id);
