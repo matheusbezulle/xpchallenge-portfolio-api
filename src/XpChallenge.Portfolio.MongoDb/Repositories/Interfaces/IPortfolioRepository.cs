@@ -7,5 +7,6 @@ namespace XpChallenge.Portfolio.MongoDb.Repositories.Interfaces
     {
         Task<ObjectId> CriarAsync(Dominio.Portfolio portfolio, CancellationToken cancellationToken);
         Task ExcluirAsync(ObjectId id, CancellationToken cancellationToken);
+        Task<Dominio.Portfolio> ObterPorIdAsync(ObjectId id, CancellationToken cancellationToken);
     }
 }

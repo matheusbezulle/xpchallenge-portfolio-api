@@ -27,10 +27,11 @@ namespace XpChallenge.Portfolio.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        public IActionResult ObterPortfolio()
+        [HttpGet("{idPortfolio}")]
+        public async Task<IActionResult> ObterPortfolio(string idPortfolio, CancellationToken cancellationToken = default)
         {
-            return Ok();
+            var result = await _mediator.Send(new ObterPortfolioQuery(idPortfolio), cancellationToken);
+            return Ok(result);
         }
     }
 }

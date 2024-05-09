@@ -19,5 +19,10 @@ namespace XpChallenge.Portfolio.Application.Services
         {
             await _portfolioRepository.ExcluirAsync(id, cancellationToken);
         }
+
+        public async Task<Dominio.Portfolio> ObterPorIdAsync(ObjectId id, CancellationToken cancellationToken)
+        {
+            return await _portfolioRepository.ObterPorIdAsync(id, cancellationToken);
+        }
     }
 }

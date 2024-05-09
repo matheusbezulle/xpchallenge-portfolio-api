@@ -8,6 +8,7 @@ namespace XpChallenge.Portfolio.Application.Ioc
     {
         public static void AddApplication(this IServiceCollection services)
         {
+            services.AddMapper();
             services.AddMediatR(mfg => mfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
             services.AddScoped<IPortfolioService, IPortfolioService>();

@@ -10,4 +10,8 @@
     <PackageReference Include="MongoDB.Bson" Version="2.25.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AggregateRoots\" />
+  </ItemGroup>
+
 </Project>
