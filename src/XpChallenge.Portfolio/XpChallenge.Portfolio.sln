@@ -5,6 +5,16 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpChallenge.Portfolio.Api", "XpChallenge.Portfolio.Api\XpChallenge.Portfolio.Api.csproj", "{C4255752-48BA-4FA2-8267-CFABD17DA3E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Presentation", "01 - Presentation", "{5BD15DA5-DACA-44D5-B893-18F0C7451322}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Application", "02 - Application", "{563A3817-33F8-4558-9153-464C61F6335A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domain", "03 - Domain", "{562B7B00-193D-45F8-85DE-957CC5E4B72F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infrastructure", "04 - Infrastructure", "{B708F62F-15C2-4720-821B-F80F288E93B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Tests", "05 - Tests", "{231E255B-4DCA-43BB-8F34-5F6A8E0F054E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4255752-48BA-4FA2-8267-CFABD17DA3E0} = {5BD15DA5-DACA-44D5-B893-18F0C7451322}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89952175-B875-4074-9B64-DC5FC33AFC60}
