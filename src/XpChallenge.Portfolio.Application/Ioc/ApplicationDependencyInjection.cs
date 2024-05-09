@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 
 namespace XpChallenge.Portfolio.Application.Ioc
@@ -10,6 +11,8 @@ namespace XpChallenge.Portfolio.Application.Ioc
         {
             services.AddMapper();
             services.AddMediatR(mfg => mfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
+            services.AddScoped<INotificator, Notificator>();
 
             services.AddScoped<IPortfolioService, IPortfolioService>();
         }

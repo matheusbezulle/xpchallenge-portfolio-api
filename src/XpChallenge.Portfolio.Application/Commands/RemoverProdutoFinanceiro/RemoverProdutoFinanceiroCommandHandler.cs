@@ -1,12 +1,15 @@
 ﻿using MediatR;
 using MongoDB.Bson;
+using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 
 namespace XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro
 {
-    public class RemoverProdutoFinanceiroCommandHandler(IPortfolioService portfolioService) : IRequestHandler<RemoverProdutoFinanceiroCommand, RemoverProdutoFinanceiroCommandResponse>
+    public class RemoverProdutoFinanceiroCommandHandler(IPortfolioService portfolioService,
+        INotificator notificator) : IRequestHandler<RemoverProdutoFinanceiroCommand, RemoverProdutoFinanceiroCommandResponse>
     {
         private readonly IPortfolioService _portfolioService = portfolioService;
+        private readonly INotificator _notificator = notificator;
 
         public async Task<RemoverProdutoFinanceiroCommandResponse> Handle(RemoverProdutoFinanceiroCommand request, CancellationToken cancellationToken)
         {
@@ -14,7 +17,7 @@ namespace XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro
 
             if (!ObjectId.TryParse(request.IdPortfolio, out var id))
             {
-                //add msg idPortfolio invalido
+                _notificator.AdicionarErroNegocio("O 'IdPortfolio' informado é inválido.");
                 return response;
             }
 
@@ -22,7 +25,7 @@ namespace XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro
 
             if (portfolio == null)
             {
-                //add msg portfolio inexistente
+                _notificator.AdicionarErroNegocio("Não foi possível encontrar o portfolio informado.");
                 return response;
             }
 
@@ -30,7 +33,7 @@ namespace XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro
 
             if (produtoFinanceiro == null)
             {
-                //add msg produto inexistente
+                _notificator.AdicionarErroNegocio("Não foi possível encontrar o produto financeiro informado.");
                 return response;
             }
 

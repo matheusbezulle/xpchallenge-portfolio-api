@@ -1,12 +1,15 @@
 ﻿using MediatR;
 using MongoDB.Bson;
+using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 
 namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceiro
 {
-    public class AlterarPesoProdutoFinanceiroCommandHandler(IPortfolioService portfolioService) : IRequestHandler<AlterarPesoProdutoFinanceiroCommand, AlterarPesoProdutoFinanceiroCommandResponse>
+    public class AlterarPesoProdutoFinanceiroCommandHandler(IPortfolioService portfolioService,
+        INotificator notificator) : IRequestHandler<AlterarPesoProdutoFinanceiroCommand, AlterarPesoProdutoFinanceiroCommandResponse>
     {
         private readonly IPortfolioService _portfolioService = portfolioService;
+        private readonly INotificator _notificator = notificator;
 
         public async Task<AlterarPesoProdutoFinanceiroCommandResponse> Handle(AlterarPesoProdutoFinanceiroCommand request, CancellationToken cancellationToken)
         {
@@ -14,7 +17,7 @@ namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceir
 
             if (!ObjectId.TryParse(request.IdPortfolio, out var id))
             {
-                //add msg idPortfolio invalido
+                _notificator.AdicionarErroNegocio("O 'IdPortfolio' informado é inválido.");
                 return response;
             }
 
@@ -22,7 +25,7 @@ namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceir
 
             if (portfolio == null)
             {
-                //add msg portfolio inexistente
+                _notificator.AdicionarErroNegocio("Não foi possível encontrar o portfolio informado.");
                 return response;
             }
 
@@ -30,7 +33,7 @@ namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceir
 
             if (produtoFinanceiro == null)
             {
-                //add msg produto inexistente
+                _notificator.AdicionarErroNegocio("Não foi possível encontrar o produto financeiro informado.");
                 return response;
             }
 

@@ -1,13 +1,16 @@
 ﻿using MediatR;
+using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 using XpChallenge.Portfolio.Domain.ValueObjects;
 using Dominio = XpChallenge.Portfolio.Domain.Entities;
 
 namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
 {
-    public class CriarPortfolioCommandHandler(IPortfolioService portfolioService) : IRequestHandler<CriarPortfolioCommand, CriarPortfolioCommandResponse>
+    public class CriarPortfolioCommandHandler(IPortfolioService portfolioService,
+        INotificator notificator) : IRequestHandler<CriarPortfolioCommand, CriarPortfolioCommandResponse>
     {
         private readonly IPortfolioService _portfolioService = portfolioService;
+        private readonly INotificator _notificator = notificator;
 
         public async Task<CriarPortfolioCommandResponse> Handle(CriarPortfolioCommand request, CancellationToken cancellationToken)
         {
@@ -19,7 +22,7 @@ namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
 
             if (id == null)
             {
-                //add msg erro 
+                _notificator.AdicionarErroAplicacao("Não foi possível cadastrar o portfolio. Tente novamente.");
                 return response;
             }
 
