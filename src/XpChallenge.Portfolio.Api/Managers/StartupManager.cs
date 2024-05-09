@@ -1,4 +1,6 @@
-﻿namespace XpChallenge.Portfolio.Api.Managers
+﻿using XpChallenge.Portfolio.Api.Middlawares.ExceptionMiddlaware;
+
+namespace XpChallenge.Portfolio.Api.Managers
 {
     public class StartupManager()
     {
@@ -7,7 +9,7 @@
             app.UseSwagger();
             app.UseRouting();
             //app.UseHealthChecks();
-            //app.UseMiddleware(typeof(ErrorMiddlaware));
+            app.UseMiddleware(typeof(ExceptionMiddlaware));
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
