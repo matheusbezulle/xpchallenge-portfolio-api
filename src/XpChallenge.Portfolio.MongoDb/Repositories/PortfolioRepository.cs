@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using XpChallenge.Portfolio.MongoDb.Repositories.Interfaces;
-using Dominio = XpChallenge.Portfolio.Domain.Entities;
+using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
 namespace XpChallenge.Portfolio.MongoDb.Repositories
 {

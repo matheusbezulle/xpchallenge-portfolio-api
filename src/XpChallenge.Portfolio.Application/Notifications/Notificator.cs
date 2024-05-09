@@ -7,7 +7,7 @@ namespace XpChallenge.Portfolio.Application.Notifications
         public bool ErroNegocio { get; private set; }
         public bool ErroAplicacao { get; private set; }
 
-        public IEnumerable<string> ObterMensagens()
+        public List<string> ObterMensagens()
         {
             return Mensagens;
         }

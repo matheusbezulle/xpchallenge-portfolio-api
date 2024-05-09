@@ -2,7 +2,7 @@
 using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 using XpChallenge.Portfolio.Domain.ValueObjects;
-using Dominio = XpChallenge.Portfolio.Domain.Entities;
+using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
 namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
 {

@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using XpChallenge.Portfolio.Domain.ValueObjects;
 
-namespace XpChallenge.Portfolio.Domain.Entities
+namespace XpChallenge.Portfolio.Domain.AggregateRoots
 {
     public class Portfolio(string nome, PortfolioPerfil perfil)
     {

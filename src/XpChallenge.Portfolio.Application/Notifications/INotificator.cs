@@ -2,7 +2,7 @@
 {
     public interface INotificator
     {
-        IEnumerable<string> ObterMensagens();
+        List<string> ObterMensagens();
         bool PossuiMensagens();
         bool PossuiErros();
         bool PossuiErrosNegocio();

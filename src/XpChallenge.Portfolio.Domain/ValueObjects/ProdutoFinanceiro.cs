@@ -1,6 +1,4 @@
-﻿using XpChallenge.Portfolio.Domain.ValueObjects;
-
-namespace XpChallenge.Portfolio.Domain.Entities
+﻿namespace XpChallenge.Portfolio.Domain.ValueObjects
 {
     public class ProdutoFinanceiro
     {

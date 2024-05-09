@@ -1,6 +1,5 @@
 ﻿using Mapster;
 using XpChallenge.Portfolio.Application.Commands.IncluirProdutoFinanceiro;
-using XpChallenge.Portfolio.Domain.Entities;
 using XpChallenge.Portfolio.Domain.ValueObjects;
 
 namespace XpChallenge.Portfolio.Application.Mappings

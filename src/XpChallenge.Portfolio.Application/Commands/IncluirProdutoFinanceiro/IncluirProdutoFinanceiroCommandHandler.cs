@@ -3,7 +3,7 @@ using MediatR;
 using MongoDB.Bson;
 using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
-using XpChallenge.Portfolio.Domain.Entities;
+using XpChallenge.Portfolio.Domain.ValueObjects;
 
 namespace XpChallenge.Portfolio.Application.Commands.IncluirProdutoFinanceiro
 {

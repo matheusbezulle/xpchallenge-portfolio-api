@@ -1,6 +1,6 @@
 ﻿using Mapster;
 using XpChallenge.Portfolio.Application.DataTransfer;
-using XpChallenge.Portfolio.Domain.Entities;
+using XpChallenge.Portfolio.Domain.ValueObjects;
 
 namespace XpChallenge.Portfolio.Application.Mappings
 {

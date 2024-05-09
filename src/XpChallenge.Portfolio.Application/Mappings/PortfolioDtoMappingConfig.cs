@@ -1,6 +1,6 @@
 ﻿using Mapster;
 using XpChallenge.Portfolio.Application.DataTransfer;
-using Dominio = XpChallenge.Portfolio.Domain.Entities;
+using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
 namespace XpChallenge.Portfolio.Application.Mappings
 {
