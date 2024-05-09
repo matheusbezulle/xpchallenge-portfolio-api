@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpChallenge.Portfolio.Api", "XpChallenge.Portfolio.Api\XpChallenge.Portfolio.Api.csproj", "{C4255752-48BA-4FA2-8267-CFABD17DA3E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Presentation", "01 - Presentation", "{5BD15DA5-DACA-44D5-B893-18F0C7451322}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Application", "02 - Application", "{563A3817-33F8-4558-9153-464C61F6335A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domain", "03 - Domain", "{562B7B00-193D-45F8-85DE-957CC5E4B72F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infrastructure", "04 - Infrastructure", "{B708F62F-15C2-4720-821B-F80F288E93B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpChallenge.Portfolio.Application", "XpChallenge.Portfolio.Application\XpChallenge.Portfolio.Application.csproj", "{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Shared", "05 - Shared", "{C997A582-314E-43B6-A6A6-2372D3BF7E6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 - Tests", "06 - Tests", "{E549C4AA-C336-4A1A-B46F-0C56CA0AA573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpChallenge.Portfolio.Domain", "XpChallenge.Portfolio.Domain\XpChallenge.Portfolio.Domain.csproj", "{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpChallenge.Portfolio.Infra.MongoDb", "XpChallenge.Portfolio.MongoDb\XpChallenge.Portfolio.Infra.MongoDb.csproj", "{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4255752-48BA-4FA2-8267-CFABD17DA3E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4255752-48BA-4FA2-8267-CFABD17DA3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4255752-48BA-4FA2-8267-CFABD17DA3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4255752-48BA-4FA2-8267-CFABD17DA3E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4255752-48BA-4FA2-8267-CFABD17DA3E0} = {5BD15DA5-DACA-44D5-B893-18F0C7451322}
+		{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286} = {563A3817-33F8-4558-9153-464C61F6335A}
+		{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D} = {562B7B00-193D-45F8-85DE-957CC5E4B72F}
+		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360} = {B708F62F-15C2-4720-821B-F80F288E93B9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89952175-B875-4074-9B64-DC5FC33AFC60}
+	EndGlobalSection
+EndGlobal
