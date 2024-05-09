@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using XpChallenge.Portfolio.Api.Requests;
+using XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceiro;
 using XpChallenge.Portfolio.Application.Commands.IncluirProdutoFinanceiro;
 
 namespace XpChallenge.Portfolio.Api.Controllers
@@ -17,6 +18,13 @@ namespace XpChallenge.Portfolio.Api.Controllers
         public async Task<IActionResult> IncluirProdutoFinanceiro([FromBody] IncluirProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
         {
             var result = await _mediator.Send(new IncluirProdutoFinanceiroCommand(request.IdPortfolio, request.Nome, request.IdCategoria, request.Peso), cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpPut("/peso")]
+        public async Task<ActionResult> AlterarPeso([FromBody] AlterarPesoProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
+        {
+            var result = await _mediator.Send(new AlterarPesoProdutoFinanceiroCommand(request.IdPortfolio, request.Nome, request.Peso));
             return Ok(result);
         }
 

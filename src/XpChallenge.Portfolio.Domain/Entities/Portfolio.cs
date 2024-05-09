@@ -24,6 +24,11 @@ namespace XpChallenge.Portfolio.Domain.Entities
             ProdutosFinanceiros.Add(produtoFinanceiro);
         }
 
+        public ProdutoFinanceiro? ObterProdutoFinanceiro(string nome)
+        {
+            return ProdutosFinanceiros.FirstOrDefault(p => string.Equals(p.Nome, nome));
+        }
+
         public bool VerificarProdutoFinanceiroExistente(string nome)
         {
             return ProdutosFinanceiros.Any(p => string.Equals(p.Nome, nome));
