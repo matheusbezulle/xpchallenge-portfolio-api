@@ -14,5 +14,13 @@ namespace XpChallenge.Portfolio.MongoDb.Repositories
             await _portfolioCollection.InsertOneAsync(portfolio, cancellationToken: cancellationToken);
             return portfolio.Id;
         }
+
+        public async Task ExcluirAsync(ObjectId id, CancellationToken cancellationToken)
+        {
+            var result = await _portfolioCollection.DeleteOneAsync(p => p.Id == id, cancellationToken: cancellationToken);
+
+            if (!result.IsAcknowledged || result.DeletedCount == 0)
+                throw new Exception("Não foi possível excluir o portfolio. Tente novamente.");
+        }
     }
 }

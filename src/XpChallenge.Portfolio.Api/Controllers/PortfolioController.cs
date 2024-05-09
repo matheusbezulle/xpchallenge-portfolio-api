@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using XpChallenge.Portfolio.Api.Requests;
 using XpChallenge.Portfolio.Application.Commands.CriarPortfolio;
+using XpChallenge.Portfolio.Application.Commands.ExcluirPortfolio;
 
 namespace XpChallenge.Portfolio.Api.Controllers
 {
@@ -19,10 +20,11 @@ namespace XpChallenge.Portfolio.Api.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
-        public IActionResult ExcluirPortfolio()
+        [HttpDelete("{idPortfolio}")]
+        public async Task<IActionResult> ExcluirPortfolio(string idPortfolio, CancellationToken cancellationToken = default)
         {
-            return Ok();
+            var result = await _mediator.Send(new ExcluirPortfolioCommand(idPortfolio), cancellationToken);
+            return Ok(result);
         }
 
         [HttpGet]
