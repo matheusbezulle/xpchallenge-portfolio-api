@@ -11,7 +11,7 @@ namespace XpChallenge.Portfolio.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllersApiBehavior();
             //services.AddApiConfiguration();
             services.AddApplication();
             services.AddMongo(_configuration);
