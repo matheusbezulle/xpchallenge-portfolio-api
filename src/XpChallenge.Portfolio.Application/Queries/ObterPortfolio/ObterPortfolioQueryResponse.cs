@@ -2,7 +2,7 @@
 
 namespace XpChallenge.Portfolio.Application.Queries.ObterPortfolio
 {
-    public class ObterPortfolioQueryResponse(PortfolioDto? portfolioDto = null)
+    public class ObterPortfolioQueryResponse(PortfolioDto? portfolioDto = null) : ResponseBaseDto
     {
         public PortfolioDto? Portfolio { get; set; } = portfolioDto;
     }

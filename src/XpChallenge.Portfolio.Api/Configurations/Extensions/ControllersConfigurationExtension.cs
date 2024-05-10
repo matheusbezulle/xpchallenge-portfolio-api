@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using XpChallenge.Portfolio.Api.Configurations.Converters;
-using XpChallenge.Portfolio.Api.Responses;
+using XpChallenge.Portfolio.Application.DataTransfer;
 
 namespace XpChallenge.Portfolio.Api.Configurations.Extensions
 {
@@ -18,7 +18,7 @@ namespace XpChallenge.Portfolio.Api.Configurations.Extensions
                             .Select(m => m.ErrorMessage)
                             .ToList();
 
-                        var result = new ResponseBase(true)
+                        var result = new ResponseBaseDto(true)
                         {
                             Mensagens = erros,
                             CorrelationId = errorContext.HttpContext.TraceIdentifier

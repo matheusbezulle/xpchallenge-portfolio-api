@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
-using XpChallenge.Portfolio.Api.Responses;
+using XpChallenge.Portfolio.Application.DataTransfer;
 
 namespace XpChallenge.Portfolio.Api.Middlawares.ExceptionMiddlaware
 {
@@ -27,7 +27,7 @@ namespace XpChallenge.Portfolio.Api.Middlawares.ExceptionMiddlaware
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.Response.ContentType = "application/json";
 
-            var response = new ResponseBase(true);
+            var response = new ResponseBaseDto(true);
             response.Mensagens.Add(ex.Message);
 
             var result = JsonSerializer.Serialize(response);

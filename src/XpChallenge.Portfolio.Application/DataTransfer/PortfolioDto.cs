@@ -6,6 +6,7 @@
         public string Nome { get; set; } = string.Empty;
         public int IdPerfil { get; set; }
         public string Perfil { get; set; } = string.Empty;
-        public IEnumerable<ProdutoFinanceiroDto> ProdutosFinanceiros { get; set; } = [];
+        public List<ProdutoFinanceiroDto> ProdutosFinanceiros { get; set; } = [];
+        public List<TotalizadorDto> Totalizadores { get; set; } = [];
     }
 }

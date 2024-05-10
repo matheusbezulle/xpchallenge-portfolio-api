@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 
-namespace XpChallenge.Portfolio.Api.Responses
+namespace XpChallenge.Portfolio.Application.DataTransfer
 {
-    public class ResponseBase(bool erro = false)
+    public class ResponseBaseDto(bool erro = false)
     {
         public bool Erro { get; set; } = erro;
         public List<string> Mensagens { get; set; } = [];

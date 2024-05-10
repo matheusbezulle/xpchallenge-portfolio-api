@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using XpChallenge.Portfolio.Api.Responses;
+using XpChallenge.Portfolio.Application.DataTransfer;
 using XpChallenge.Portfolio.Application.Notifications;
 
 namespace XpChallenge.Portfolio.Api.Controllers
@@ -10,7 +10,7 @@ namespace XpChallenge.Portfolio.Api.Controllers
 
         protected IActionResult ProcessarRetorno(object response = null)
         {
-            var responseBase = new ResponseBase
+            var responseBase = new ResponseBaseDto
             {
                 Mensagens = _notificator.ObterMensagens()
             };
