@@ -22,6 +22,7 @@ namespace XpChallenge.Portfolio.Api.Configurations.Extensions
                 });
                 
                 c.MapType<int>(() => new OpenApiSchema() { Type = "integer", Default = new OpenApiInteger(0) });
+                c.MapType<DateTime>(() => new OpenApiSchema() { Type = "datetime", Default = new OpenApiString("01/01/0001") });
             });
         }
 
