@@ -52,9 +52,7 @@ namespace XpChallenge.Portfolio.Application.Queries.ObterPortfolio
             for (int i = 0; i < produtosFinanceiros.Count; i++)
             {
                 if (i == produtosFinanceiros.Count - 1)
-                {
                     produtosFinanceiros[i].Porcentagem = 100.0 - somaPorcentagens;
-                }
                 else
                 {
                     double porcentagem = Math.Round((double)produtosFinanceiros[i].Peso / somaTotal * 100, 2);
@@ -72,24 +70,14 @@ namespace XpChallenge.Portfolio.Application.Queries.ObterPortfolio
             for (int i = 0; i < categorias.Count; i++)
             {
                 if (i == categorias.Count - 1)
-                {
-                    portfolioDto.Totalizadores.Add(new TotalizadorDto
-                    {
-                        Nome = categorias[i].Key,
-                        Porcentagem = Math.Round(100.0 - somaPorcentagens, 2)
-                    });
-                }
+                    portfolioDto.Totalizadores.Add(new(categorias[i].Key, Math.Round(100.0 - somaPorcentagens, 2)));
                 else
                 {
                     int somaCategoria = categorias[i].Sum(obj => obj.Peso);
                     double porcentagemCategoria = Math.Round((double)somaCategoria / somaTotal * 100, 2);
                     somaPorcentagens += porcentagemCategoria;
 
-                    portfolioDto.Totalizadores.Add(new TotalizadorDto
-                    {
-                        Nome = categorias[i].Key,
-                        Porcentagem = porcentagemCategoria
-                    });
+                    portfolioDto.Totalizadores.Add(new(categorias[i].Key, porcentagemCategoria));
                 }
             }
         }
