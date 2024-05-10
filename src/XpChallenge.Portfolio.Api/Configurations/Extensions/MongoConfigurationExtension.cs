@@ -13,7 +13,8 @@ namespace XpChallenge.Portfolio.Api.Configurations.Extensions
             {
                 var connectionString = string.Format(mongoSettings.ConnectionString,
                     mongoSettings.User,
-                    mongoSettings.Password);
+                    mongoSettings.Password,
+                    mongoSettings.DatabaseName);
 
                 services.AddSingleton<IMongoClient>(_ => new MongoClient(connectionString));
                 services.AddScoped(serviceProvider =>

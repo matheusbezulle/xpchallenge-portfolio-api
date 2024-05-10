@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using XpChallenge.Portfolio.Api.Configurations.Converters;
 using XpChallenge.Portfolio.Api.Responses;
 
 namespace XpChallenge.Portfolio.Api.Configurations.Extensions
@@ -25,6 +26,9 @@ namespace XpChallenge.Portfolio.Api.Configurations.Extensions
 
                         return new BadRequestObjectResult(result);
                     };
+                }).AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
                 });
         }
     }

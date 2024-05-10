@@ -1,4 +1,5 @@
-﻿using XpChallenge.Portfolio.Api.Middlawares.ExceptionMiddlaware;
+﻿using XpChallenge.Portfolio.Api.Configurations.Extensions;
+using XpChallenge.Portfolio.Api.Middlawares.ExceptionMiddlaware;
 
 namespace XpChallenge.Portfolio.Api.Managers
 {
@@ -6,7 +7,7 @@ namespace XpChallenge.Portfolio.Api.Managers
     {
         public void Configure(IApplicationBuilder app)
         {
-            app.UseSwagger();
+            app.UseSwaggerConfiguration();
             app.UseRouting();
             //app.UseHealthChecks();
             app.UseMiddleware(typeof(ExceptionMiddlaware));

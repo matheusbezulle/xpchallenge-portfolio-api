@@ -4,11 +4,11 @@ using XpChallenge.Portfolio.Application.Notifications;
 
 namespace XpChallenge.Portfolio.Api.Controllers
 {
-    public class ControllerBase(INotificator notificator) : Controller
+    public abstract class ControllerBase(INotificator notificator) : Controller
     {
         private readonly INotificator _notificator = notificator;
 
-        public IActionResult ProcessarRetorno(object response = null)
+        protected IActionResult ProcessarRetorno(object response = null)
         {
             var responseBase = new ResponseBase
             {

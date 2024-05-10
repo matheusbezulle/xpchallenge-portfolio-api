@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using XpChallenge.Portfolio.Application.Notifications;
+using XpChallenge.Portfolio.Application.Services;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 
 namespace XpChallenge.Portfolio.Application.Ioc
@@ -14,7 +15,7 @@ namespace XpChallenge.Portfolio.Application.Ioc
 
             services.AddScoped<INotificator, Notificator>();
 
-            services.AddScoped<IPortfolioService, IPortfolioService>();
+            services.AddScoped<IPortfolioService, PortfolioService>();
         }
     }
 }
