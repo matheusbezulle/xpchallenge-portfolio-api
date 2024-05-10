@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpChallenge.Portfolio.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpChallenge.Portfolio.Infra.MongoDb", "XpChallenge.Portfolio.MongoDb\XpChallenge.Portfolio.Infra.MongoDb.csproj", "{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpChallenge.Portfolio.Tests", "..\tests\XpChallenge.Portfolio.Tests\XpChallenge.Portfolio.Tests.csproj", "{29CC8798-DE9F-4EB4-B590-8EC6A716C9E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29CC8798-DE9F-4EB4-B590-8EC6A716C9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29CC8798-DE9F-4EB4-B590-8EC6A716C9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29CC8798-DE9F-4EB4-B590-8EC6A716C9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29CC8798-DE9F-4EB4-B590-8EC6A716C9E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{54CD8CCC-EDFA-4D0C-9D3D-6B55108C1286} = {563A3817-33F8-4558-9153-464C61F6335A}
 		{E9E7780D-1D82-4FB3-A5FD-6E6663405B9D} = {562B7B00-193D-45F8-85DE-957CC5E4B72F}
 		{526D9D0E-8F88-4FAA-9D16-C5CC63A95360} = {B708F62F-15C2-4720-821B-F80F288E93B9}
+		{29CC8798-DE9F-4EB4-B590-8EC6A716C9E1} = {E549C4AA-C336-4A1A-B46F-0C56CA0AA573}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89952175-B875-4074-9B64-DC5FC33AFC60}
