@@ -16,6 +16,7 @@ namespace XpChallenge.Portfolio.Application.Ioc
             services.AddScoped<INotificator, Notificator>();
 
             services.AddScoped<IAdministradorService, AdministradorService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IPortfolioService, PortfolioService>();
         }
     }

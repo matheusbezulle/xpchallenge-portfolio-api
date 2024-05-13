@@ -41,7 +41,6 @@ namespace XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro
 
             await _portfolioService.AtualizarAsync(portfolio, cancellationToken);
 
-            response.Sucesso = true;
             return response;
         }
     }

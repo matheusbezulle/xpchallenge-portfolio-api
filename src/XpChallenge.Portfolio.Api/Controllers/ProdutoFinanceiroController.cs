@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using XpChallenge.Portfolio.Api.Requests;
-using XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceiro;
+using XpChallenge.Portfolio.Application.Commands.AlterarProdutoFinanceiro;
 using XpChallenge.Portfolio.Application.Commands.IncluirProdutoFinanceiro;
 using XpChallenge.Portfolio.Application.Commands.RemoverProdutoFinanceiro;
 using XpChallenge.Portfolio.Application.Notifications;
@@ -29,15 +29,15 @@ namespace XpChallenge.Portfolio.Api.Controllers
         }
 
         /// <summary>
-        /// Método responsável por alterar o peso de um produto financeiro em determinado portfólio
+        /// Método responsável por alterar um produto financeiro em determinado portfólio
         /// </summary>
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        [HttpPut("[controller]/Peso")]
-        public async Task<IActionResult> AlterarPesoAsync([FromBody] AlterarPesoProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
+        [HttpPut("[controller]")]
+        public async Task<IActionResult> AlterarProdutoFinanceiroAsync([FromBody] AlterarProdutoFinanceiroRequest request, CancellationToken cancellationToken = default)
         {
-            await _mediator.Send(new AlterarPesoProdutoFinanceiroCommand(request.IdPortfolio, request.Nome, request.Peso), cancellationToken);
+            await _mediator.Send(new AlterarProdutoFinanceiroCommand(request.IdPortfolio, request.Nome, request.Peso, request.DataVencimento), cancellationToken);
             return ProcessarRetorno();
         }
 

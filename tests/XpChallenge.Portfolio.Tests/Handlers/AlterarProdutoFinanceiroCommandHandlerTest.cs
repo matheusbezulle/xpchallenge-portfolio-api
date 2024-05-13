@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using Moq;
-using XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceiro;
+using XpChallenge.Portfolio.Application.Commands.AlterarProdutoFinanceiro;
 using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 using XpChallenge.Portfolio.Domain.ValueObjects;
@@ -8,14 +8,14 @@ using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
 namespace XpChallenge.Portfolio.Tests.Handlers
 {
-    public class AlterarPesoCommandHandlerTest
+    public class AlterarProdutoFinanceiroCommandHandlerTest
     {
         private readonly Mock<IPortfolioService> _portfolioServiceMock;
         private readonly Mock<INotificator> _notificatorMock;
 
-        private readonly AlterarPesoProdutoFinanceiroCommandHandler _handler;
+        private readonly AlterarProdutoFinanceiroCommandHandler _handler;
 
-        public AlterarPesoCommandHandlerTest()
+        public AlterarProdutoFinanceiroCommandHandlerTest()
         {
             _portfolioServiceMock = new Mock<IPortfolioService>();
             _notificatorMock = new Mock<INotificator>();
@@ -24,9 +24,9 @@ namespace XpChallenge.Portfolio.Tests.Handlers
         }
 
         [Fact]
-        public async Task AlterarPeso_Sucesso()
+        public async Task AlterarProdutoFinanceiro_Sucesso()
         {
-            var command = new AlterarPesoProdutoFinanceiroCommand(ObjectId.GenerateNewId().ToString(), "PETR4", 10);
+            var command = new AlterarProdutoFinanceiroCommand(ObjectId.GenerateNewId().ToString(), "PETR4", 10, DateTime.Now.AddDays(50));
 
             _portfolioServiceMock.Setup(x => x.ObterPorIdAsync(It.IsAny<ObjectId>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(GerarPortfolio());
@@ -43,9 +43,9 @@ namespace XpChallenge.Portfolio.Tests.Handlers
         }
 
         [Fact]
-        public async Task AlterarPeso_IdPortfolioInvalido_Falha()
+        public async Task AlterarProdutoFinanceiro_IdPortfolioInvalido_Falha()
         {
-            var command = new AlterarPesoProdutoFinanceiroCommand("", "PETR4", 10);
+            var command = new AlterarProdutoFinanceiroCommand("", "PETR4", 10, DateTime.Now.AddDays(50));
 
             _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
                 .Verifiable();
@@ -56,9 +56,9 @@ namespace XpChallenge.Portfolio.Tests.Handlers
         }
 
         [Fact]
-        public async Task AlterarPeso_PortfolioInexistente_Falha()
+        public async Task AlterarProdutoFinanceiro_PortfolioInexistente_Falha()
         {
-            var command = new AlterarPesoProdutoFinanceiroCommand(ObjectId.GenerateNewId().ToString(), "PETR4", 10);
+            var command = new AlterarProdutoFinanceiroCommand(ObjectId.GenerateNewId().ToString(), "PETR4", 10, DateTime.Now.AddDays(50));
 
             _portfolioServiceMock.Setup(x => x.ObterPorIdAsync(It.IsAny<ObjectId>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync((Dominio.Portfolio)null!);
@@ -74,7 +74,7 @@ namespace XpChallenge.Portfolio.Tests.Handlers
         [Fact]
         public async Task AlterarPeso_ProdutoFinanceiroInexistente_Falha()
         {
-            var command = new AlterarPesoProdutoFinanceiroCommand(ObjectId.GenerateNewId().ToString(), "PETR4", 10);
+            var command = new AlterarProdutoFinanceiroCommand(ObjectId.GenerateNewId().ToString(), "PETR4", 10, DateTime.Now.AddDays(50));
 
             _portfolioServiceMock.Setup(x => x.ObterPorIdAsync(It.IsAny<ObjectId>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(GerarPortfolio(false));

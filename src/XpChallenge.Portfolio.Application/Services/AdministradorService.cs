@@ -8,9 +8,11 @@ using System.Text;
 
 namespace XpChallenge.Portfolio.Application.Services
 {
-    public class AdministradorService(IAdministradorRepository administradorRepository,
+    public class AdministradorService(IEmailService emailService,
+        IAdministradorRepository administradorRepository,
         IPortfolioRepository portfolioRepository) : IAdministradorService
     {
+        private readonly IEmailService emailService = emailService;
         private readonly IAdministradorRepository _administradorRepository = administradorRepository;
         private readonly IPortfolioRepository _portfolioRepository = portfolioRepository;
 
@@ -41,41 +43,7 @@ namespace XpChallenge.Portfolio.Application.Services
             if (!produtosProximosAoVencimento.Any())
                 return;
 
-            var fromAddress = new MailAddress("matheusbezulle.brawl@gmail.com", "Matheus Brawl");
-            const string fromPassword = "tempteste02";
-            const string subject = "Produtos financeiros próximos ao vencimento";
-            var body = new StringBuilder("");
-
-            foreach (var produto in produtosProximosAoVencimento)
-            {
-                body.AppendLine($"\nPortfólio {produto.Nome}:");
-                foreach (var p in produto.ProdutosFinanceiros)
-                {
-                    body.AppendLine($" {p.Nome} vence em {p.DataVencimento.ToString()};");
-                }
-            }
-
-            Parallel.ForEach(administradores, adm =>
-            {
-                var toAddress = new MailAddress(adm.Email, "Matheus Bezulle");
-
-                var smtp = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 60 * 60
-                };
-                using var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body.ToString()
-                };
-                smtp.Send(message);
-            });
+            emailService.NotificarAdministradores(produtosProximosAoVencimento, administradores);
         }
     }
 }

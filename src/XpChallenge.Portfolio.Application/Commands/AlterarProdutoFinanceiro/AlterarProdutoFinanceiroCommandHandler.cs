@@ -3,17 +3,17 @@ using MongoDB.Bson;
 using XpChallenge.Portfolio.Application.Notifications;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
 
-namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceiro
+namespace XpChallenge.Portfolio.Application.Commands.AlterarProdutoFinanceiro
 {
-    public class AlterarPesoProdutoFinanceiroCommandHandler(IPortfolioService portfolioService,
-        INotificator notificator) : IRequestHandler<AlterarPesoProdutoFinanceiroCommand, AlterarPesoProdutoFinanceiroCommandResponse>
+    public class AlterarProdutoFinanceiroCommandHandler(IPortfolioService portfolioService,
+        INotificator notificator) : IRequestHandler<AlterarProdutoFinanceiroCommand, AlterarProdutoFinanceiroCommandResponse>
     {
         private readonly IPortfolioService _portfolioService = portfolioService;
         private readonly INotificator _notificator = notificator;
 
-        public async Task<AlterarPesoProdutoFinanceiroCommandResponse> Handle(AlterarPesoProdutoFinanceiroCommand request, CancellationToken cancellationToken)
+        public async Task<AlterarProdutoFinanceiroCommandResponse> Handle(AlterarProdutoFinanceiroCommand request, CancellationToken cancellationToken)
         {
-            var response = new AlterarPesoProdutoFinanceiroCommandResponse();
+            var response = new AlterarProdutoFinanceiroCommandResponse();
 
             if (!ObjectId.TryParse(request.IdPortfolio, out var id))
             {
@@ -38,6 +38,8 @@ namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceir
             }
 
             produtoFinanceiro.AtualizarPeso(request.Peso);
+            produtoFinanceiro.AtualizarDataVencimento(request.DataVencimento);
+
             await _portfolioService.AtualizarAsync(portfolio, cancellationToken);
 
             return response;
