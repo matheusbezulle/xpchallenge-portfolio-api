@@ -44,5 +44,20 @@ namespace XpChallenge.Portfolio.Mongo.Repositories
             var portfolio = await _portfolioCollection.Find(p => p.Id.Equals(id)).FirstOrDefaultAsync(cancellationToken);
             return portfolio;
         }
+
+        public async Task<IEnumerable<Dominio.Portfolio>> ObterProximosAoVencimentoAsync(CancellationToken cancellationToken)
+        {
+            var dataReferencia = DateTime.Now.AddDays(2);
+
+            var filter = Builders<Dominio.Portfolio>.Filter.ElemMatch(p => p.ProdutosFinanceiros, pf => pf.DataVencimento <= dataReferencia);
+            var portfolios = await _portfolioCollection.Find(filter).ToListAsync(cancellationToken);
+
+            foreach (var portfolio in portfolios)
+            {
+                portfolio.ProdutosFinanceiros.RemoveAll(p => p.DataVencimento > dataReferencia);
+            }
+
+            return portfolios;
+        }
     }
 }

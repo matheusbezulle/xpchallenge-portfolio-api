@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using XpChallenge.Portfolio.Infra.MongoDb.Ioc;
+using XpChallenge.Portfolio.Infra.Mongo.Ioc;
 
 namespace XpChallenge.Portfolio.Api.Configurations.Extensions
 {

@@ -1,5 +1,7 @@
-﻿using XpChallenge.Portfolio.Api.Configurations.Extensions;
+﻿using Hangfire;
+using XpChallenge.Portfolio.Api.Configurations.Extensions;
 using XpChallenge.Portfolio.Api.Middlawares.ExceptionMiddlaware;
+using XpChallenge.Portfolio.Application.Services;
 
 namespace XpChallenge.Portfolio.Api.Managers
 {
@@ -14,6 +16,11 @@ namespace XpChallenge.Portfolio.Api.Managers
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHangfireDashboard();
+
+            RecurringJob.AddOrUpdate<AdministradorService>("teste", administradorService =>
+                administradorService.NotificarProdutosProximosAoVencimento(new CancellationToken()), Cron.Minutely);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace XpChallenge.Portfolio.Api
             services.AddSwaggerConfiguration();
             services.AddApplication();
             services.AddMongo(_configuration);
+            services.AddHangfire(_configuration);
         }
 
         public void Configure(IApplicationBuilder app)
