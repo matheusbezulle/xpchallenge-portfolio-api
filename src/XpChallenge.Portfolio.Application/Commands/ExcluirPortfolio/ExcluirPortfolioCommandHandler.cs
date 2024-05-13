@@ -23,7 +23,6 @@ namespace XpChallenge.Portfolio.Application.Commands.ExcluirPortfolio
 
             await _portfolioService.ExcluirAsync(id, cancellationToken);
 
-            response.Sucesso = true;
             return response;
         }
     }
