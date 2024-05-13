@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using XpChallenge.Portfolio.MongoDb.Repositories;
-using XpChallenge.Portfolio.MongoDb.Repositories.Interfaces;
+using XpChallenge.Portfolio.Mongo.Repositories;
+using XpChallenge.Portfolio.Mongo.Repositories.Interfaces;
 
-namespace XpChallenge.Portfolio.Infra.MongoDb.Ioc
+namespace XpChallenge.Portfolio.Infra.Mongo.Ioc
 {
     public static class MongoDependencyInjection
     {

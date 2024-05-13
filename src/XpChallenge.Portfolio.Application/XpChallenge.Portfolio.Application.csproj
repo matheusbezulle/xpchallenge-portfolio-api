@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\XpChallenge.Portfolio.Domain\XpChallenge.Portfolio.Domain.csproj" />
+    <ProjectReference Include="..\XpChallenge.Portfolio.Infra.Mongo\XpChallenge.Portfolio.Infra.Mongo.csproj" />
     <ProjectReference Include="..\XpChallenge.Portfolio.MongoDb\XpChallenge.Portfolio.Infra.MongoDb.csproj" />
   </ItemGroup>
 

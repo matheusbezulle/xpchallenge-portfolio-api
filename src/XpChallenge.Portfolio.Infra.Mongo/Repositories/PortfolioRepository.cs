@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using XpChallenge.Portfolio.MongoDb.Repositories.Interfaces;
+using XpChallenge.Portfolio.Mongo.Repositories.Interfaces;
 using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
-namespace XpChallenge.Portfolio.MongoDb.Repositories
+namespace XpChallenge.Portfolio.Mongo.Repositories
 {
     public class PortfolioRepository(IMongoDatabase database) : IPortfolioRepository
     {

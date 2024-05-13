@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
-namespace XpChallenge.Portfolio.MongoDb.Repositories.Interfaces
+namespace XpChallenge.Portfolio.Mongo.Repositories.Interfaces
 {
     public interface IPortfolioRepository
     {

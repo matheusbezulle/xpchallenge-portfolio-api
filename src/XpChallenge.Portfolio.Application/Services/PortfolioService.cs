@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using XpChallenge.Portfolio.Application.Services.Interfaces;
-using XpChallenge.Portfolio.MongoDb.Repositories.Interfaces;
+using XpChallenge.Portfolio.Mongo.Repositories.Interfaces;
 using Dominio = XpChallenge.Portfolio.Domain.AggregateRoots;
 
 namespace XpChallenge.Portfolio.Application.Services
