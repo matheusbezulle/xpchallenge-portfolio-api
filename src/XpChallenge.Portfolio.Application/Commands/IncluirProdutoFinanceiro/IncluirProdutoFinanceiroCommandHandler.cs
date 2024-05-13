@@ -44,7 +44,6 @@ namespace XpChallenge.Portfolio.Application.Commands.IncluirProdutoFinanceiro
 
             await _portfolioService.AtualizarAsync(portfolio, cancellationToken);
 
-            response.Sucesso = true;
             return response;
         }
     }
