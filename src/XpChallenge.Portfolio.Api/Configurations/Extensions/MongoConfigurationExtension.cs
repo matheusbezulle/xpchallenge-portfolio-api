@@ -12,8 +12,6 @@ namespace XpChallenge.Portfolio.Api.Configurations.Extensions
             if (mongoSettings != null && !string.IsNullOrEmpty(mongoSettings.ConnectionString))
             {
                 var connectionString = string.Format(mongoSettings.ConnectionString,
-                    mongoSettings.User,
-                    mongoSettings.Password,
                     mongoSettings.DatabaseName);
 
                 services.AddSingleton<IMongoClient>(_ => new MongoClient(connectionString));
