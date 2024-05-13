@@ -37,7 +37,7 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
                 .Verifiable();
 
-            var result = await _handler.Handle(command, new CancellationToken());
+            await _handler.Handle(command, new CancellationToken());
 
             _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Never);
         }
@@ -50,7 +50,7 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
                 .Verifiable();
 
-            var result = await _handler.Handle(command, new CancellationToken());
+            await _handler.Handle(command, new CancellationToken());
 
             _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Once);
         }
@@ -66,7 +66,7 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
                 .Verifiable();
 
-            var result = await _handler.Handle(command, new CancellationToken());
+            await _handler.Handle(command, new CancellationToken());
 
             _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Once);
         }
@@ -82,7 +82,7 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
                 .Verifiable();
 
-            var result = await _handler.Handle(command, new CancellationToken());
+            await _handler.Handle(command, new CancellationToken());
 
             _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Once);
         }
