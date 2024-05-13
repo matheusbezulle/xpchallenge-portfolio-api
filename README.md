@@ -94,16 +94,16 @@ Método responsável por incluir novos produtos financeiros em um determinado po
 
 *O peso do produto financeiro significa proporcionalmente o quanto da carteira esse produto representa. O peso definido será sempre proporcinal aos pesos definidos em todos os produtos de um determinado portfólio. Por exemplo: um portfólio com 3 produtos, com pesos 4, 6 e 10. Respectivamente, os pesos simbolizam 20%, 30% e 50% da composição da carteira.
 
-#### 🟡 PUT /ProdutoFinanceiro/Peso
+#### 🟡 PUT /ProdutoFinanceiro
 
-Método responsável por alterar o peso de um produto financeiro em determinado portfólio.
+Método responsável por alterar um produto financeiro em determinado portfólio.
 
 **Parâmetros do corpo da solicitação**:
 
 - `IdPortfolio` (string): Identificador único do portfólio. Este campo é obrigatório.
 - `Nome` (string): Nome do produto financeiro. Este campo é obrigatório.
 - `Peso` (int): Novo peso do produto financeiro. Este campo é obrigatório.
-
+- `DataVencimento` (DateTime): Data de vencimento do produto financeiro. Este campo é obrigatório e deve ser preenchido no formato dd/MM/yyyy.
 
 #### 🔴 DELETE /ProdutoFinanceiro
 
