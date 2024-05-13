@@ -16,6 +16,19 @@ namespace XpChallenge.Portfolio.Api.Controllers
         private readonly IMediator _mediator = mediator;
 
         /// <summary>
+        /// Obter os dados de determinado portfólio
+        /// </summary>
+        /// <param name="idPortfolio"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpGet("{idPortfolio}")]
+        public async Task<IActionResult> ObterPortfolioAsync(string idPortfolio, CancellationToken cancellationToken = default)
+        {
+            var result = await _mediator.Send(new ObterPortfolioQuery(idPortfolio), cancellationToken);
+            return ProcessarRetorno(result);
+        }
+
+        /// <summary>
         /// Método responsável por cadastrar um novo portfólio
         /// </summary>
         /// <param name="request"></param>
@@ -39,19 +52,6 @@ namespace XpChallenge.Portfolio.Api.Controllers
         {
             await _mediator.Send(new ExcluirPortfolioCommand(idPortfolio), cancellationToken);
             return ProcessarRetorno();
-        }
-
-        /// <summary>
-        /// Obter os dados de determinado portfólio
-        /// </summary>
-        /// <param name="idPortfolio"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        [HttpGet("{idPortfolio}")]
-        public async Task<IActionResult> ObterPortfolioAsync(string idPortfolio, CancellationToken cancellationToken = default)
-        {
-            var result = await _mediator.Send(new ObterPortfolioQuery(idPortfolio), cancellationToken);
-            return ProcessarRetorno(result);
         }
     }
 }
