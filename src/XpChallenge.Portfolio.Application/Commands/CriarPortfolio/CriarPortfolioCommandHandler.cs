@@ -23,6 +23,7 @@ namespace XpChallenge.Portfolio.Application.Commands.CriarPortfolio
             if (id == null)
             {
                 _notificator.AdicionarErroAplicacao("Não foi possível cadastrar o portfolio. Tente novamente.");
+                response.Mensagens = _notificator.ObterMensagens();
                 return response;
             }
 

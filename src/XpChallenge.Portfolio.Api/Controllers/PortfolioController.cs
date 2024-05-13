@@ -24,8 +24,8 @@ namespace XpChallenge.Portfolio.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CriarPortfolioAsync([FromBody] CriarPortfolioRequest request, CancellationToken cancellationToken = default)
         {
-            await _mediator.Send(new CriarPortfolioCommand(request.Nome, request.IdPerfil), cancellationToken);
-            return ProcessarRetorno();
+            var result = await _mediator.Send(new CriarPortfolioCommand(request.Nome, request.IdPerfil), cancellationToken);
+            return ProcessarRetorno(result);
         }
 
         /// <summary>
