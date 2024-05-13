@@ -34,13 +34,12 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _portfolioServiceMock.Setup(x => x.AtualizarAsync(It.IsAny<Dominio.Portfolio>(), It.IsAny<CancellationToken>()))
                 .Verifiable();
 
-            var result = await _handler.Handle(command, new CancellationToken());
-
-            _portfolioServiceMock.Setup(x => x.AtualizarAsync(It.IsAny<Dominio.Portfolio>(), It.IsAny<CancellationToken>()))
+            _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
                 .Verifiable();
 
-            Assert.NotNull(result);
-            Assert.True(result.Sucesso);
+            var result = await _handler.Handle(command, new CancellationToken());
+
+            _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Never);
         }
 
         [Fact]
@@ -48,10 +47,12 @@ namespace XpChallenge.Portfolio.Tests.Handlers
         {
             var command = new AlterarPesoProdutoFinanceiroCommand("", "PETR4", 10);
 
+            _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
+                .Verifiable();
+
             var result = await _handler.Handle(command, new CancellationToken());
 
-            Assert.NotNull(result);
-            Assert.False(result.Sucesso);
+            _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Once);
         }
 
         [Fact]
@@ -62,10 +63,12 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _portfolioServiceMock.Setup(x => x.ObterPorIdAsync(It.IsAny<ObjectId>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync((Dominio.Portfolio)null!);
 
+            _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
+                .Verifiable();
+
             var result = await _handler.Handle(command, new CancellationToken());
 
-            Assert.NotNull(result);
-            Assert.False(result.Sucesso);
+            _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Once);
         }
 
         [Fact]
@@ -76,10 +79,12 @@ namespace XpChallenge.Portfolio.Tests.Handlers
             _portfolioServiceMock.Setup(x => x.ObterPorIdAsync(It.IsAny<ObjectId>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(GerarPortfolio(false));
 
+            _notificatorMock.Setup(x => x.AdicionarErroNegocio(It.IsAny<string>()))
+                .Verifiable();
+
             var result = await _handler.Handle(command, new CancellationToken());
 
-            Assert.NotNull(result);
-            Assert.False(result.Sucesso);
+            _notificatorMock.Verify(x => x.AdicionarErroNegocio(It.IsAny<string>()), Times.Once);
         }
 
         private static Dominio.Portfolio GerarPortfolio(bool incluirItens = true)

@@ -38,10 +38,8 @@ namespace XpChallenge.Portfolio.Application.Commands.AlterarPesoProdutoFinanceir
             }
 
             produtoFinanceiro.AtualizarPeso(request.Peso);
-
             await _portfolioService.AtualizarAsync(portfolio, cancellationToken);
 
-            response.Sucesso = true;
             return response;
         }
     }
