@@ -8,11 +8,6 @@ using XpChallenge.Portfolio.Application.Queries.ObterPortfolio;
 
 namespace XpChallenge.Portfolio.Api.Controllers
 {
-    /// <summary>
-    /// Controller responsável por métodos de gerenciamento dos portfólios
-    /// </summary>
-    /// <param name="mediator"></param>
-    /// <param name="notificator"></param>
     [ApiController]
     [Route("[controller]")]
     public class PortfolioController(IMediator mediator,
@@ -27,7 +22,7 @@ namespace XpChallenge.Portfolio.Api.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CriarPortfolio([FromBody] CriarPortfolioRequest request, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> CriarPortfolioAsync([FromBody] CriarPortfolioRequest request, CancellationToken cancellationToken = default)
         {
             await _mediator.Send(new CriarPortfolioCommand(request.Nome, request.IdPerfil), cancellationToken);
             return ProcessarRetorno();
@@ -40,20 +35,20 @@ namespace XpChallenge.Portfolio.Api.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpDelete("{idPortfolio}")]
-        public async Task<IActionResult> ExcluirPortfolio(string idPortfolio, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> ExcluirPortfolioAsync(string idPortfolio, CancellationToken cancellationToken = default)
         {
             await _mediator.Send(new ExcluirPortfolioCommand(idPortfolio), cancellationToken);
             return ProcessarRetorno();
         }
 
         /// <summary>
-        /// Método para obter os dados de determinado portfólio
+        /// Obter os dados de determinado portfólio
         /// </summary>
         /// <param name="idPortfolio"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpGet("{idPortfolio}")]
-        public async Task<IActionResult> ObterPortfolio(string idPortfolio, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> ObterPortfolioAsync(string idPortfolio, CancellationToken cancellationToken = default)
         {
             var result = await _mediator.Send(new ObterPortfolioQuery(idPortfolio), cancellationToken);
             return ProcessarRetorno(result);

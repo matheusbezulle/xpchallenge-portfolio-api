@@ -13,7 +13,6 @@ namespace XpChallenge.Portfolio.Api
         {
             services.AddControllersApiBehavior();
             services.AddSwaggerConfiguration();
-            //services.AddApiConfiguration();
             services.AddApplication();
             services.AddMongo(_configuration);
         }

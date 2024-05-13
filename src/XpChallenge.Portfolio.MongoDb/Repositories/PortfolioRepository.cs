@@ -7,7 +7,7 @@ namespace XpChallenge.Portfolio.MongoDb.Repositories
 {
     public class PortfolioRepository(IMongoDatabase database) : IPortfolioRepository
     {
-        private readonly IMongoCollection<Dominio.Portfolio> _portfolioCollection = database.GetCollection<Dominio.Portfolio>("portfolios");
+        private readonly IMongoCollection<Dominio.Portfolio> _portfolioCollection = database.GetCollection<Dominio.Portfolio>("Portfolios");
 
         public async Task<ObjectId> CriarAsync(Dominio.Portfolio portfolio, CancellationToken cancellationToken)
         {

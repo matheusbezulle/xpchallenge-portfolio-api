@@ -9,7 +9,6 @@ namespace XpChallenge.Portfolio.Api.Managers
         {
             app.UseSwaggerConfiguration();
             app.UseRouting();
-            //app.UseHealthChecks();
             app.UseMiddleware(typeof(ExceptionMiddlaware));
             app.UseEndpoints(endpoints =>
             {
