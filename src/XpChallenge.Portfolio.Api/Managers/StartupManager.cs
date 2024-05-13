@@ -19,8 +19,8 @@ namespace XpChallenge.Portfolio.Api.Managers
 
             app.UseHangfireDashboard();
 
-            RecurringJob.AddOrUpdate<AdministradorService>("teste", administradorService =>
-                administradorService.NotificarProdutosProximosAoVencimento(new CancellationToken()), Cron.Minutely);
+            RecurringJob.AddOrUpdate<AdministradorService>("NotificarProdutosProximosAoVencimento", administradorService =>
+                administradorService.NotificarProdutosProximosAoVencimento(new CancellationToken()), Cron.Daily);
         }
     }
 }
