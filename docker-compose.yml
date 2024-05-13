@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  mdb-portfolio:
+    image: mongo:latest
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27018"]
+    ports:
+      - 27018:27018
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27018'}]}) }" | mongosh --port 27018 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      retries: 30
+    volumes:
+      - "mdb-portfolio_data:/data/db"
+      - "mdb-portfolio_config:/data/configdb"
+  xpchallenge-portfolio-api:
+    image: ${DOCKER_REGISTRY-}xpchallenge.portfolio.api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8001:8080"
+volumes:
+  mdb-portfolio_data:
+  mdb-portfolio_config:
